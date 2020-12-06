@@ -7,12 +7,17 @@ namespace PureCheat.Addons
     {
         public override string ModName => "Fly";
 
+        public static int flySpeed = 2;
+        public static bool isFly = false;
+
+
+
         public override void OnUpdate()
         {
             if (Input.GetKeyDown(KeyCode.F))
             {
-                Vars.isFly = !Vars.isFly;
-                if (Vars.isFly)
+                isFly = !isFly;
+                if (isFly)
                 {
                     PureUtils.GetLocalPlayer().GetComponent<CharacterController>().enabled = false;
                     PureLogger.Log("Fly has been Enabled");
@@ -24,39 +29,39 @@ namespace PureCheat.Addons
                 }
             }
 
-            if (Vars.isFly)
+            if (isFly)
             {
                 GameObject player = PureUtils.GetLocalPlayer();
-                GameObject playercamera = PureUtils.GetLocalPlayerCamera();
+                GameObject playerCamera = PureUtils.GetLocalPlayerCamera();
 
-                if (Vars.flySpeed <= 0)
-                    Vars.flySpeed = 1;
+                if (flySpeed <= 0)
+                    flySpeed = 1;
 
                 if (Input.mouseScrollDelta.y != 0)
                 {
-                    Vars.flySpeed += (int)Input.mouseScrollDelta.y;
-                    PureLogger.Log($"Fly speed: {Vars.flySpeed}");
+                    flySpeed += (int)Input.mouseScrollDelta.y;
+                    PureLogger.Log($"Fly speed: {flySpeed}");
                 }
 
 
                 if (Input.GetKey(KeyCode.W))
-                    player.transform.position += playercamera.transform.forward * Vars.flySpeed * Time.deltaTime;
+                    player.transform.position += playerCamera.transform.forward * flySpeed * Time.deltaTime;
                 if (Input.GetKey(KeyCode.A))
-                    player.transform.position -= playercamera.transform.right * Vars.flySpeed * Time.deltaTime;
+                    player.transform.position -= playerCamera.transform.right * flySpeed * Time.deltaTime;
                 if (Input.GetKey(KeyCode.S))
-                    player.transform.position -= playercamera.transform.forward * Vars.flySpeed * Time.deltaTime;
+                    player.transform.position -= playerCamera.transform.forward * flySpeed * Time.deltaTime;
                 if (Input.GetKey(KeyCode.D))
-                    player.transform.position += playercamera.transform.right * Vars.flySpeed * Time.deltaTime;
+                    player.transform.position += playerCamera.transform.right * flySpeed * Time.deltaTime;
 
                 if (Input.GetKey(KeyCode.E))
-                    player.transform.position += playercamera.transform.up * Vars.flySpeed * Time.deltaTime;
+                    player.transform.position += playerCamera.transform.up * flySpeed * Time.deltaTime;
                 if (Input.GetKey(KeyCode.Q))
-                    player.transform.position -= playercamera.transform.up * Vars.flySpeed * Time.deltaTime;
+                    player.transform.position -= playerCamera.transform.up * flySpeed * Time.deltaTime;
 
                 if (System.Math.Abs(Input.GetAxis("Joy1 Axis 2")) > 0f)
-                    player.transform.position += playercamera.transform.forward * Vars.flySpeed * Time.deltaTime * (Input.GetAxis("Joy1 Axis 2") * -1f);
+                    player.transform.position += playerCamera.transform.forward * flySpeed * Time.deltaTime * (Input.GetAxis("Joy1 Axis 2") * -1f);
                 if (System.Math.Abs(Input.GetAxis("Joy1 Axis 1")) > 0f)
-                    player.transform.position += playercamera.transform.right * Vars.flySpeed * Time.deltaTime * Input.GetAxis("Joy1 Axis 1");
+                    player.transform.position += playerCamera.transform.right * flySpeed * Time.deltaTime * Input.GetAxis("Joy1 Axis 1");
             }
         }
     }

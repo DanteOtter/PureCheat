@@ -15,8 +15,11 @@ namespace PureCheat
 
             PureLogger.Init();
 
+            Mods.Add(new QMUI());
+
             Mods.Add(new Fly());
             Mods.Add(new Test());
+            Mods.Add(new Donation());
             Mods.Add(new RayTeleport());
 
             foreach (PureModSystem mod in Mods)

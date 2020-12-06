@@ -10,9 +10,9 @@ namespace PureCheat.Addons
         {
             if (Input.GetKey(KeyCode.LeftShift) && Input.GetMouseButtonDown(0))
             {
-                GameObject player = PureUtils.GetLocalPlayer();
+                GameObject playerCamera = PureUtils.GetLocalPlayerCamera();
 
-                Ray ray = new Ray(PureUtils.GetLocalPlayerCamera().transform.position, PureUtils.GetLocalPlayerCamera().transform.forward);
+                Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
                 RaycastHit[] hits = Physics.RaycastAll(ray);
                 if (hits.Length > 0)
                 {
