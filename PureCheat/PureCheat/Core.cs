@@ -13,12 +13,17 @@ namespace PureCheat
         {
             base.OnApplicationStart();
 
+            PureLogger.Init();
+
             Mods.Add(new Fly());
             Mods.Add(new Test());
             Mods.Add(new RayTeleport());
 
             foreach (PureModSystem mod in Mods)
+            {
                 mod.OnEarlierStart();
+                PureLogger.Log($"{mod.ModName} loaded!");
+            }
         }
 
         public override void VRChat_OnUiManagerInit()

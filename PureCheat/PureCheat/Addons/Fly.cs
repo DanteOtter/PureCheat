@@ -1,10 +1,12 @@
-﻿using PureCheat.API;
-using UnityEngine;
+﻿using UnityEngine;
+using PureCheat.API;
 
 namespace PureCheat.Addons
 {
     public class Fly : PureModSystem
     {
+        public override string ModName => "Fly";
+
         public override void OnUpdate()
         {
             if (Input.GetKeyDown(KeyCode.F))
@@ -27,14 +29,15 @@ namespace PureCheat.Addons
                 GameObject player = PureUtils.GetLocalPlayer();
                 GameObject playercamera = PureUtils.GetLocalPlayerCamera();
 
+                if (Vars.flySpeed <= 0)
+                    Vars.flySpeed = 1;
+
                 if (Input.mouseScrollDelta.y != 0)
                 {
                     Vars.flySpeed += (int)Input.mouseScrollDelta.y;
                     PureLogger.Log($"Fly speed: {Vars.flySpeed}");
                 }
 
-                if (Vars.flySpeed <= 0)
-                    Vars.flySpeed = 1;
 
                 if (Input.GetKey(KeyCode.W))
                     player.transform.position += playercamera.transform.forward * Vars.flySpeed * Time.deltaTime;

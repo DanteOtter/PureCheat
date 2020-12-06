@@ -1,11 +1,11 @@
-﻿using System;
+﻿using UnityEngine;
 using PureCheat.API;
-using UnityEngine;
 
 namespace PureCheat.Addons
 {
     class RayTeleport : PureModSystem
     {
+        public override string ModName => "RayTeleport";
         public override void OnUpdate()
         {
             if (Input.GetKey(KeyCode.LeftShift) && Input.GetMouseButtonDown(0))

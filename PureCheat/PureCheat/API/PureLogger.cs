@@ -4,6 +4,12 @@ namespace PureCheat.API
 {
     public static class PureLogger
     {
+        public static void Init()
+        {
+            Console.Title = "PureCheat by PureFoxCore#8192";
+            Console.Clear();
+        }
+
         public static void Log(object message)
         {
             Console.ForegroundColor = ConsoleColor.White;

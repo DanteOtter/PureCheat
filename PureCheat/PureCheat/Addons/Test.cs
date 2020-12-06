@@ -1,11 +1,12 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using PureCheat.API;
 
 namespace PureCheat.Addons
 {
     public class Test : PureModSystem
     {
+        public override string ModName => "Test";
+
         public override void OnUpdate()
         {
             if (Input.GetKeyDown(KeyCode.U))

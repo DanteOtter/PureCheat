@@ -2,6 +2,7 @@
 {
     public class PureModSystem
     {
+        public virtual string ModName => "Default Mod";
         public virtual void OnEarlierStart() { }
         public virtual void OnStart() { }
         public virtual void OnUpdate() { }
