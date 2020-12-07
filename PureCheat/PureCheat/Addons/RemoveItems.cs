@@ -1,14 +1,16 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using PureCheat.API;
 
 namespace PureCheat.Addons
 {
-    public class RayTeleport : PureModSystem
+    public class RemoveItems : PureModSystem
     {
-        public override string ModName => "RayTeleport";
+        public override string ModName => "Remove items";
+
         public override void OnUpdate()
         {
-            if (Input.GetKey(KeyCode.LeftShift) && Input.GetMouseButtonDown(0))
+            if (Input.GetKey(KeyCode.LeftAlt) && Input.GetMouseButton(1) && Input.GetMouseButtonDown(0))
             {
                 GameObject playerCamera = PureUtils.GetLocalPlayerCamera();
 
@@ -17,7 +19,7 @@ namespace PureCheat.Addons
                 if (hits.Length > 0)
                 {
                     RaycastHit raycastHit = hits[0];
-                    PureUtils.GetLocalPlayer().transform.position = raycastHit.point;
+                    GameObject.Destroy(raycastHit.transform.gameObject);
                 }
             }
         }

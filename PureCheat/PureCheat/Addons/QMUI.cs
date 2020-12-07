@@ -4,6 +4,8 @@ namespace PureCheat.Addons
 {
     public class QMUI : PureModSystem
     {
+        public override string ModName => "QuickMenu Utils";
+
         public static QMNestedButton UIMenuP1;
         public static QMNestedButton UIMenuP2;
         public static QMNestedButton UIMenuP3;

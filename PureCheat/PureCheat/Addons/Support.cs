@@ -1,9 +1,10 @@
 ﻿using System;
+using UnityEngine;
 using PureCheat.API;
 
 namespace PureCheat.Addons
 {
-    public class Donation : PureModSystem
+    public class Support : PureModSystem
     {
         public override string ModName => "Support";
 
@@ -11,10 +12,10 @@ namespace PureCheat.Addons
 
         public override void OnStart()
         {
-            DonateButton = new QMSingleButton(QMUI.UIMenuP1, 0, 2, "Support", new Action(() =>
+            DonateButton = new QMSingleButton(QMUI.UIMenuP3, 5, 0, "Support", new Action(() =>
             {
                 PureLogger.Log("Thanks for support!");
-            }), "Support author!");
+            }), "Support author!", Color.yellow, Color.green);
         }
     }
 }

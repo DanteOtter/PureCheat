@@ -19,8 +19,11 @@ namespace PureCheat
 
             Mods.Add(new Fly());
             Mods.Add(new Test());
-            Mods.Add(new Donation());
+            Mods.Add(new Support());
+            Mods.Add(new FuckVRC());
+            Mods.Add(new HideMenu());
             Mods.Add(new RayTeleport());
+            Mods.Add(new RemoveItems());
 
             foreach (PureModSystem mod in Mods)
             {
@@ -32,6 +35,8 @@ namespace PureCheat
         public override void VRChat_OnUiManagerInit()
         {
             base.VRChat_OnUiManagerInit();
+
+            GlobalVariables.isVRCUILoaded = true;
 
             foreach (PureModSystem mod in Mods)
                 mod.OnStart();
