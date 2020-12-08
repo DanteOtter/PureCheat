@@ -1,4 +1,4 @@
-﻿namespace PureCheat.API
+﻿namespace PureCheat
 {
     public class GlobalVariables
     {

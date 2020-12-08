@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using RubyButtonAPI;
 using PureCheat.API;
 using PureCheat.Forms;
 
@@ -28,6 +29,22 @@ namespace PureCheat.Addons
             if (Input.GetKeyDown(KeyCode.T))
                 foreach (GameObject gameObject in PureUtils.GetAllObjectsInSceneTree())
                     PureLogger.Log($"Name: [{gameObject.transform.name}] | Pos: ({gameObject.transform.position.x}, {gameObject.transform.position.y}, {gameObject.transform.position.z})");
+
+            if (Input.GetKey(KeyCode.Tab) && Input.GetMouseButtonDown(1))
+            {
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hit;
+
+                if (Physics.Raycast(ray, out hit))
+                    PureLogger.Log(hit.transform.name);
+            }
+
+            if (Input.GetKeyDown(KeyCode.L))
+            {
+                foreach (GameObject gameObject in PureUtils.GetAllGameObjects())
+                    if (gameObject != PureUtils.GetLocalPlayer())
+                        gameObject.SetActive(false);
+            }
 
             if (Input.GetKeyDown(KeyCode.I))
             {

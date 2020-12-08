@@ -1,4 +1,5 @@
-﻿using PureCheat.API;
+﻿using RubyButtonAPI;
+using PureCheat.API;
 
 namespace PureCheat.Addons
 {

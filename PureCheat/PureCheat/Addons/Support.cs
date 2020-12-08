@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using RubyButtonAPI;
 using PureCheat.API;
 
 namespace PureCheat.Addons

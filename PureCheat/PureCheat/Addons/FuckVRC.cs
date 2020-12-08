@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using PureCheat.API;
+using RubyButtonAPI;
 using System.Diagnostics;
 
 namespace PureCheat.Addons

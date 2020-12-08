@@ -69,6 +69,10 @@
       <HintPath>..\..\..\..\..\Games\SteamLibrary\steamapps\common\VRChat\MelonLoader\Managed\UnityEngine.InputModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="UnityEngine.Physics2DModule">
+      <HintPath>..\..\..\..\..\Games\SteamLibrary\steamapps\common\VRChat\MelonLoader\Managed\UnityEngine.Physics2DModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="UnityEngine.PhysicsModule">
       <HintPath>..\..\..\..\..\Games\SteamLibrary\steamapps\common\VRChat\MelonLoader\Managed\UnityEngine.PhysicsModule.dll</HintPath>
       <Private>False</Private>
@@ -91,6 +95,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Addons\FPSUnlimiter.cs" />
+    <Compile Include="Addons\FuckPlus.cs" />
     <Compile Include="Addons\FuckVRC.cs" />
     <Compile Include="Addons\HideMenu.cs" />
     <Compile Include="Addons\RemoveItems.cs" />
@@ -99,11 +105,11 @@
     <Compile Include="Addons\QMUI.cs" />
     <Compile Include="Addons\RayTeleport.cs" />
     <Compile Include="Addons\Test.cs" />
-    <Compile Include="API\PureButtons.cs" />
+    <Compile Include="Addons\UnlimitedAvatarFavorite.cs" />
     <Compile Include="API\PureLogger.cs" />
     <Compile Include="API\PureModSystem.cs" />
     <Compile Include="API\PureUtils.cs" />
-    <Compile Include="API\GlobalVariables.cs" />
+    <Compile Include="GlobalVariables.cs" />
     <Compile Include="Core.cs" />
     <Compile Include="Forms\TPForm.cs">
       <SubType>Form</SubType>
@@ -112,6 +118,7 @@
       <DependentUpon>TPForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Vendor\RubyButtonAPI.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Forms\TPForm.resx">

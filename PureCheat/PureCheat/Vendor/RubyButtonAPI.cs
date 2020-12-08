@@ -1,18 +1,28 @@
 ﻿using System;
-using UnityEngine;
+using Il2CppSystem.Reflection;
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
+using UnhollowerRuntimeLib;
+using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
-using UnhollowerRuntimeLib;
-using Il2CppSystem.Reflection;
-using System.Collections.Generic;
+using VRC.UI;
 
-namespace PureCheat.API
+namespace RubyButtonAPI
 {
+	//Firstly, thanks to Emilia for helping me update this to the unhollower.
+	//This adds a couple of new functions compared to the old one, however,
+	//like the last one, I will not be providing any support as I will
+	//personally not be using melonloader/unhollower in the near future.
+
+	//Look here for a useful example guide:
+	//https://github.com/DubyaDude/RubyButtonAPI/blob/master/RubyButtonAPI_Old.cs
+
     public static class QMButtonAPI
     {
-        //REPLACE THIS STRING SO YOUR MENU DOESNT COLLIDE WITH OTHER MENUS
-        public static string identifier = "REPLACEME";
+    	//REPLACE THIS STRING SO YOUR MENU DOESNT COLLIDE WITH OTHER MENUS
+    	public static string identifier = "REPLACEME";
         public static Color mBackground = Color.red;
         public static Color mForeground = Color.white;
         public static Color bBackground = Color.red;
@@ -136,7 +146,7 @@ namespace PureCheat.API
         {
             button.GetComponent<Button>().onClick = new Button.ButtonClickedEvent();
             if (buttonAction != null)
-                button.GetComponent<Button>().onClick.AddListener(UnhollowerRuntimeLib.DelegateSupport.ConvertDelegate<UnityAction>(buttonAction));
+            button.GetComponent<Button>().onClick.AddListener(UnhollowerRuntimeLib.DelegateSupport.ConvertDelegate<UnityAction>(buttonAction));
         }
 
         public override void setBackgroundColor(Color buttonBackgroundColor, bool save = true)
@@ -263,16 +273,16 @@ namespace PureCheat.API
 
             button.GetComponent<Button>().onClick = new Button.ButtonClickedEvent();
             button.GetComponent<Button>().onClick.AddListener(UnhollowerRuntimeLib.DelegateSupport.ConvertDelegate<UnityAction>((System.Action)(() =>
-            {
-                if (btnOn.activeSelf)
-                {
-                    setToggleState(false, true);
-                }
-                else
-                {
-                    setToggleState(true, true);
-                }
-            })));
+          {
+              if (btnOn.activeSelf)
+              {
+                  setToggleState(false, true);
+              }
+              else
+              {
+                  setToggleState(true, true);
+              }
+          })));
         }
 
 
@@ -492,7 +502,7 @@ namespace PureCheat.API
                 if (!shortcutMenu.activeInHierarchy)
                     shortcutMenu = quickmenu.transform.Find("UserInteractMenu").gameObject;
 
-
+                
                 FieldInfo[] fis = Il2CppType.Of<QuickMenu>().GetFields(BindingFlags.NonPublic | BindingFlags.Instance).Where((fi) => fi.FieldType == Il2CppType.Of<GameObject>()).ToArray();
                 //MelonLoader.MelonModLogger.Log("[QMStuff] GameObject Fields in QuickMenu:");
                 int count = 0;

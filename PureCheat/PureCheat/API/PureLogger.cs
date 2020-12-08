@@ -7,7 +7,7 @@ namespace PureCheat.API
         public static void Init()
         {
             Console.Title = "PureCheat by PureFoxCore#8192";
-            Console.Clear();
+            //Console.Clear();
         }
 
         public static void Log(object message)
