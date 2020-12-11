@@ -14,7 +14,7 @@ namespace PureCheat.API
         {
             Console.ForegroundColor = ConsoleColor.White;
             Console.Write("[");
-            Console.ForegroundColor = ConsoleColor.Green;
+            Console.ForegroundColor = ConsoleColor.Blue;
             Console.Write(DateTime.Now.ToString("HH:mm:ss.fff"));
             Console.ForegroundColor = ConsoleColor.White;
             Console.Write("] [");
@@ -29,7 +29,7 @@ namespace PureCheat.API
         {
             Console.ForegroundColor = ConsoleColor.White;
             Console.Write("[");
-            Console.ForegroundColor = ConsoleColor.Green;
+            Console.ForegroundColor = ConsoleColor.Blue;
             Console.Write(DateTime.Now.ToString("HH:mm:ss.fff"));
             Console.ForegroundColor = ConsoleColor.White;
             Console.Write("] [");

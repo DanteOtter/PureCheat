@@ -1,24 +1,10 @@
-﻿using System;
-using UnityEngine;
-using RubyButtonAPI;
+﻿using UnityEngine;
 using PureCheat.API;
-using PureCheat.Forms;
-
 namespace PureCheat.Addons
 {
     public class Test : PureModSystem
     {
         public override string ModName => "Test";
-
-        public static QMSingleButton testCallFormButton;
-
-        public override void OnStart()
-        {
-            testCallFormButton = new QMSingleButton(QMUI.UIMenuP1, 5, 0, "Call\nForm", new Action(()=>
-            {
-                System.Windows.Forms.Application.Run(new TPForm());
-            }), "Call Test Form");
-        }
 
         public override void OnUpdate()
         {

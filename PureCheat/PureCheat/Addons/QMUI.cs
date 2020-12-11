@@ -11,6 +11,8 @@ namespace PureCheat.Addons
         public static QMNestedButton UIMenuP2;
         public static QMNestedButton UIMenuP3;
 
+        // ▲▼
+
         public override void OnStart()
         {
             UIMenuP1 = new QMNestedButton("ShortcutMenu", 0, 0, "Pure\nMenu", "PureCheat Menu");

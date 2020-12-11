@@ -8,7 +8,7 @@ namespace PureCheat.Addons
         public override string ModName => "RayTeleport";
         public override void OnUpdate()
         {
-            if (Input.GetKey(KeyCode.LeftShift) && Input.GetMouseButtonDown(0))
+            if (Input.GetKey(KeyCode.LeftControl) && Input.GetMouseButtonDown(0))
             {
                 GameObject playerCamera = PureUtils.GetLocalPlayerCamera();
 

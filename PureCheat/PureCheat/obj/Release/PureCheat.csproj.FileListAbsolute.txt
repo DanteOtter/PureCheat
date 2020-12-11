@@ -4,5 +4,3 @@ D:\Projects\C#\PureCheat\PureCheat\PureCheat\obj\Release\PureCheat.csprojAssembl
 D:\Projects\C#\PureCheat\PureCheat\PureCheat\obj\Release\PureCheat.csproj.CoreCompileInputs.cache
 D:\Projects\C#\PureCheat\PureCheat\PureCheat\obj\Release\PureCheat.dll
 D:\Projects\C#\PureCheat\PureCheat\PureCheat\obj\Release\PureCheat.pdb
-D:\Projects\C#\PureCheat\PureCheat\PureCheat\obj\Release\PureCheat.csproj.GenerateResource.cache
-D:\Projects\C#\PureCheat\PureCheat\PureCheat\obj\Release\PureCheat.Forms.TPForm.resources

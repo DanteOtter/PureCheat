@@ -14,6 +14,8 @@ namespace PureCheat.Addons
 
         public static QMNestedButton flyMenu;
         public static QMToggleButton toggleFlyButton;
+        public static QMHalfButton flySpeedUp;
+        public static QMHalfButton flySpeedDown;
         public static QMSingleButton resetFlySpeedButton;
 
         public override void OnStart()
@@ -35,6 +37,23 @@ namespace PureCheat.Addons
                 flySpeed = 2;
                 resetFlySpeedButton.setButtonText($"Reset\nSpeed\n[{flySpeed}]");
             }), "Reset fly speed");
+
+            flySpeedUp = new QMHalfButton(flyMenu, 3, 0.0f, "▲", new Action(() =>
+            {
+                flySpeed += 1;
+
+                resetFlySpeedButton.setButtonText($"Reset\nSpeed\n[{flySpeed}]");
+            }), "Set speed up");
+
+            flySpeedDown = new QMHalfButton(flyMenu, 3, 0.5f, "▼", new Action(() =>
+            {
+                flySpeed -= 1;
+
+                if (flySpeed <= 0)
+                    flySpeed = 1;
+
+                resetFlySpeedButton.setButtonText($"Reset\nSpeed\n[{flySpeed}]");
+            }), "Set speed down");
         }
 
         public override void OnUpdate()

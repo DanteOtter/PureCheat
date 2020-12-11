@@ -18,14 +18,18 @@ namespace PureCheat
             Mods.Add(new QMUI());
 
             Mods.Add(new Fly());
+            Mods.Add(new Jump());
             Mods.Add(new Test());
             Mods.Add(new Support());
             Mods.Add(new FuckVRC());
+            Mods.Add(new EarRape());
             Mods.Add(new FuckPlus());
             Mods.Add(new HideMenu());
+            Mods.Add(new FOVChanger());
             Mods.Add(new RayTeleport());
             Mods.Add(new RemoveItems());
             Mods.Add(new FPSUnlimiter());
+            Mods.Add(new PlayerTeleport());
 
             foreach (PureModSystem mod in Mods)
             {

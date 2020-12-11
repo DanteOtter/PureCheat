@@ -16,7 +16,13 @@ namespace PureCheat.Addons
         {
             hideClientButton = new QMSingleButton(QMUI.UIMenuP1, 0, 0, "Hide\nClient\nMenu", new Action(() =>
             {
-                MenuHiddenState = false;
+                MenuHiddenState = !MenuHiddenState;
+
+                if (MenuHiddenState)
+                    hideClientButton.setButtonText("Hide\nClient\nMenu");
+                else
+                    hideClientButton.setButtonText("Show\nClient\nMenu");
+
                 QMUI.UIMenuP1.getMainButton().setActive(MenuHiddenState);
             }), "Hide This Menu [H]");
         }
@@ -26,6 +32,12 @@ namespace PureCheat.Addons
             if (Input.GetKeyDown(KeyCode.H) && GlobalVariables.isVRCUILoaded)
             {
                 MenuHiddenState = !MenuHiddenState;
+
+                if (MenuHiddenState)
+                    hideClientButton.setButtonText("Hide\nClient\nMenu");
+                else
+                    hideClientButton.setButtonText("Show\nClient\nMenu");
+
                 QMUI.UIMenuP1.getMainButton().setActive(MenuHiddenState);           
             }
         }

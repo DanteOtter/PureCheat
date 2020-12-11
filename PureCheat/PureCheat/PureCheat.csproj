@@ -95,10 +95,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Addons\FOVChanger.cs" />
     <Compile Include="Addons\FPSUnlimiter.cs" />
     <Compile Include="Addons\FuckPlus.cs" />
     <Compile Include="Addons\FuckVRC.cs" />
     <Compile Include="Addons\HideMenu.cs" />
+    <Compile Include="Addons\Jump.cs" />
+    <Compile Include="Addons\PlayerTeleport.cs" />
     <Compile Include="Addons\RemoveItems.cs" />
     <Compile Include="Addons\Support.cs" />
     <Compile Include="Addons\Fly.cs" />
@@ -106,24 +109,15 @@
     <Compile Include="Addons\RayTeleport.cs" />
     <Compile Include="Addons\Test.cs" />
     <Compile Include="Addons\UnlimitedAvatarFavorite.cs" />
+    <Compile Include="Addons\EarRape.cs" />
     <Compile Include="API\PureLogger.cs" />
     <Compile Include="API\PureModSystem.cs" />
     <Compile Include="API\PureUtils.cs" />
+    <Compile Include="API\Wrapper.cs" />
     <Compile Include="GlobalVariables.cs" />
     <Compile Include="Core.cs" />
-    <Compile Include="Forms\TPForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\TPForm.Designer.cs">
-      <DependentUpon>TPForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Vendor\RubyButtonAPI.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Forms\TPForm.resx">
-      <DependentUpon>TPForm.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
