@@ -1,7 +1,8 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.UI;
 using PureCheat.API;
-using RubyButtonAPI;
+using PlagueButtonAPI;
 
 namespace PureCheat.Addons
 {
@@ -10,37 +11,22 @@ namespace PureCheat.Addons
 
         public override string ModName => "EarRape";
 
-        public static QMToggleButton toggleEarRape;
+        public static GameObject earRapeButton = null;
 
         public override void OnStart()
         {
-            toggleEarRape = new QMToggleButton(QMUI.UIMenuP1, 4, 0,
-            "EarRape ON", new Action(() =>
-            {
-                USpeaker.field_Internal_Static_Single_1 = float.MaxValue;
-                PureLogger.Log(ConsoleColor.Red, "EarRape Enabled");
-            }), "EarRape OFF", new Action(() =>
-            {
-                USpeaker.field_Internal_Static_Single_1 = 1f;
-                PureLogger.Log(ConsoleColor.Green, "EarRape Disabled");
-            }), "Toggle EarRape");
+             earRapeButton = ButtonAPI.CreateButton(ButtonAPI.ButtonType.Toggle, "EarRape", "FUCK ALL EARS",
+                ButtonAPI.HorizontalPosition.FourthButtonPos, ButtonAPI.VerticalPosition.TopButton, ButtonAPI.MakeEmptyPage("PureCheat").transform, delegate (bool a)
+                {
+                    USpeaker.field_Internal_Static_Single_1 = a ? float.MaxValue : 1f;
+                    PureLogger.Log(a ? ConsoleColor.Red : ConsoleColor.Green, a ? "EarRape Enabled" : "EarRape Disabled");
+                }, Color.white, Color.red, null, false, false, false, false, null, true);
         }
 
         public override void OnUpdate()
         {
             if (Input.GetKeyDown(KeyCode.F9))
-                if (USpeaker.field_Internal_Static_Single_1 <= 1f)
-                {
-                    toggleEarRape.setToggleState(true);
-                    USpeaker.field_Internal_Static_Single_1 = float.MaxValue;
-                    PureLogger.Log(ConsoleColor.Red, "EarRape Enabled");
-                }
-                else
-                {
-                    toggleEarRape.setToggleState(false);
-                    USpeaker.field_Internal_Static_Single_1 = 1f;
-                    PureLogger.Log(ConsoleColor.Green, "EarRape Disabled");
-                }
+                earRapeButton.GetComponent<Button>().onClick.Invoke();
         }
     }
 }

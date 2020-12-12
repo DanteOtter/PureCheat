@@ -1,7 +1,8 @@
 ﻿using System;
 using UnityEngine;
-using RubyButtonAPI;
 using PureCheat.API;
+using UnityEngine.UI;
+using PlagueButtonAPI;
 
 namespace PureCheat.Addons
 {
@@ -12,67 +13,50 @@ namespace PureCheat.Addons
         public static int flySpeed = 2;
         public static bool isFly = false;
 
-        public static QMNestedButton flyMenu;
-        public static QMToggleButton toggleFlyButton;
-        public static QMHalfButton flySpeedUp;
-        public static QMHalfButton flySpeedDown;
-        public static QMSingleButton resetFlySpeedButton;
+        public static GameObject toggleFlyButton = null;
 
         public override void OnStart()
         {
-            flyMenu = new QMNestedButton(QMUI.UIMenuP1, 1, 0, "Fly\nMenu", "Fly Menu");
+            ButtonAPI.CreateButton(ButtonAPI.ButtonType.Default, "Fly Menu", "Fly menu",
+                ButtonAPI.HorizontalPosition.FirstButtonPos, ButtonAPI.VerticalPosition.TopButton, ButtonAPI.MakeEmptyPage("PureCheat").transform, delegate (bool a)
+                {
+                    ButtonAPI.EnterSubMenu(ButtonAPI.MakeEmptyPage("FlyMenu"));
+                }, Color.white, Color.white, null, false, false);
 
-            toggleFlyButton = new QMToggleButton(flyMenu, 1, 0, "Fly ON", new Action(() =>
-            {
-                isFly = true;
-                PureUtils.GetLocalPlayer().GetComponent<CharacterController>().enabled = false;
-            }), "Fly OFF", new Action(() =>
-            {
-                isFly = false;
-                PureUtils.GetLocalPlayer().GetComponent<CharacterController>().enabled = true;
-            }), "Toggle fly");
+            toggleFlyButton = ButtonAPI.CreateButton(ButtonAPI.ButtonType.Toggle, "Fly", "Toggle fly",
+                ButtonAPI.HorizontalPosition.FirstButtonPos, ButtonAPI.VerticalPosition.TopButton, ButtonAPI.MakeEmptyPage("FlyMenu").transform, delegate (bool a)
+                {
+                    isFly = a;
+                    PureUtils.GetLocalPlayer().GetComponent<CharacterController>().enabled = !a;
+                    PureLogger.Log(a ? "Fly enabled" : "Fly Disabled");
+                }, Color.white, Color.red, null, false, false);
 
-            resetFlySpeedButton = new QMSingleButton(flyMenu, 2, 0, $"Reset\nSpeed\n[{flySpeed}]", new Action(() =>
-            {
-                flySpeed = 2;
-                resetFlySpeedButton.setButtonText($"Reset\nSpeed\n[{flySpeed}]");
-            }), "Reset fly speed");
+            ButtonAPI.CreateButton(ButtonAPI.ButtonType.Default, $"Reset Speed", "Reset fly speed",
+                ButtonAPI.HorizontalPosition.FirstButtonPos, ButtonAPI.VerticalPosition.TopButton, ButtonAPI.MakeEmptyPage("FlyMenu").transform, delegate (bool a)
+                {
+                    flySpeed = 2;
+                }, Color.white, Color.white, null, false);
 
-            flySpeedUp = new QMHalfButton(flyMenu, 3, 0.0f, "▲", new Action(() =>
-            {
-                flySpeed += 1;
+            ButtonAPI.CreateButton(ButtonAPI.ButtonType.Default, "▲", "Fly speed up",
+                ButtonAPI.HorizontalPosition.SecondButtonPos, ButtonAPI.VerticalPosition.TopButton, ButtonAPI.MakeEmptyPage("FlyMenu").transform, delegate (bool a)
+                {
+                    flySpeed += 1;
+                }, Color.white, Color.white, null, false, false);
 
-                resetFlySpeedButton.setButtonText($"Reset\nSpeed\n[{flySpeed}]");
-            }), "Set speed up");
+            ButtonAPI.CreateButton(ButtonAPI.ButtonType.Default, "▼", "Fly speed down",
+                ButtonAPI.HorizontalPosition.SecondButtonPos, ButtonAPI.VerticalPosition.TopButton, ButtonAPI.MakeEmptyPage("FlyMenu").transform, delegate (bool a)
+                {
+                    flySpeed -= 1;
 
-            flySpeedDown = new QMHalfButton(flyMenu, 3, 0.5f, "▼", new Action(() =>
-            {
-                flySpeed -= 1;
-
-                if (flySpeed <= 0)
-                    flySpeed = 1;
-
-                resetFlySpeedButton.setButtonText($"Reset\nSpeed\n[{flySpeed}]");
-            }), "Set speed down");
+                    if (flySpeed <= 0)
+                        flySpeed = 1;
+                }, Color.white, Color.white, null, false);
         }
 
         public override void OnUpdate()
         {
             if (Input.GetKeyDown(KeyCode.F))
-            {
-                isFly = !isFly;
-                if (isFly)
-                {
-                    PureUtils.GetLocalPlayer().GetComponent<CharacterController>().enabled = false;
-                    PureLogger.Log("Fly enabled");
-                }
-                else
-                {
-                    PureUtils.GetLocalPlayer().GetComponent<CharacterController>().enabled = true;
-                    PureLogger.Log("Fly disabled");
-                }
-                toggleFlyButton.setToggleState(isFly);
-            }
+                toggleFlyButton.GetComponent<Button>().onClick.Invoke();
 
             if (isFly)
             {
@@ -85,8 +69,6 @@ namespace PureCheat.Addons
 
                     if (flySpeed <= 0)
                         flySpeed = 1;
-
-                    resetFlySpeedButton.setButtonText($"Reset\nSpeed\n[{flySpeed}]");
                 }
 
 

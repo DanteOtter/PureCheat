@@ -1,6 +1,6 @@
-﻿using System;
+﻿using UnityEngine;
 using PureCheat.API;
-using RubyButtonAPI;
+using PlagueButtonAPI;
 
 namespace PureCheat.Addons
 {
@@ -8,20 +8,19 @@ namespace PureCheat.Addons
     {
         public override string ModName => "Jump";
 
-        public static QMSingleButton addJumpButton;
-
         public override void OnStart()
         {
-            addJumpButton = new QMSingleButton(QMUI.UIMenuP1, 3, 0, "Add\nJump", new Action(() =>
+            ButtonAPI.CreateButton(ButtonAPI.ButtonType.Default, "Add Jump", "Add jump component to player",
+                ButtonAPI.HorizontalPosition.SecondButtonPos, ButtonAPI.VerticalPosition.TopButton, ButtonAPI.MakeEmptyPage("PureCheat").transform, delegate (bool a)
             {
                 if (PureUtils.GetLocalPlayer().GetComponent<PlayerModComponentJump>())
                     return;
                 else
                     PureUtils.GetLocalPlayer().AddComponent<PlayerModComponentJump>();
 
-                PureUtils.GetLocalPlayer().GetComponent<PlayerModComponentJump>().field_Private_Single_0 = 2.0f;
-                PureUtils.GetLocalPlayer().GetComponent<PlayerModComponentJump>().field_Private_Single_1 = 2.0f;
-            }), "Add jump component to player");
+                PureUtils.GetLocalPlayer().GetComponent<PlayerModComponentJump>().field_Private_Single_0 = 3.0f;
+                //PureUtils.GetLocalPlayer().GetComponent<PlayerModComponentJump>().field_Private_Single_1 = 3.0f;
+            }, Color.white, Color.white, null);
         }
     }
 }

@@ -97,27 +97,26 @@
   <ItemGroup>
     <Compile Include="Addons\FOVChanger.cs" />
     <Compile Include="Addons\FPSUnlimiter.cs" />
-    <Compile Include="Addons\FuckPlus.cs" />
-    <Compile Include="Addons\FuckVRC.cs" />
-    <Compile Include="Addons\HideMenu.cs" />
+    <Compile Include="Addons\FastQuit.cs" />
     <Compile Include="Addons\Jump.cs" />
     <Compile Include="Addons\PlayerTeleport.cs" />
     <Compile Include="Addons\RemoveItems.cs" />
-    <Compile Include="Addons\Support.cs" />
     <Compile Include="Addons\Fly.cs" />
     <Compile Include="Addons\QMUI.cs" />
     <Compile Include="Addons\RayTeleport.cs" />
-    <Compile Include="Addons\Test.cs" />
     <Compile Include="Addons\UnlimitedAvatarFavorite.cs" />
     <Compile Include="Addons\EarRape.cs" />
+    <Compile Include="Addons\VRCMin.cs" />
     <Compile Include="API\PureLogger.cs" />
     <Compile Include="API\PureModSystem.cs" />
     <Compile Include="API\PureUtils.cs" />
     <Compile Include="API\Wrapper.cs" />
-    <Compile Include="GlobalVariables.cs" />
     <Compile Include="Core.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Vendor\RubyButtonAPI.cs" />
+    <Compile Include="Vendor\Plague\PlagueButtonAPI.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Vendor\Plague\LICENSE" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

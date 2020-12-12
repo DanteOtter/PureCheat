@@ -1,5 +1,6 @@
-﻿using RubyButtonAPI;
+﻿using UnityEngine;
 using PureCheat.API;
+using PlagueButtonAPI;
 
 namespace PureCheat.Addons
 {
@@ -7,17 +8,21 @@ namespace PureCheat.Addons
     {
         public override string ModName => "QuickMenu Utils";
 
-        public static QMNestedButton UIMenuP1;
-        public static QMNestedButton UIMenuP2;
-        public static QMNestedButton UIMenuP3;
-
         // ▲▼
 
         public override void OnStart()
         {
-            UIMenuP1 = new QMNestedButton("ShortcutMenu", 0, 0, "Pure\nMenu", "PureCheat Menu");
-            UIMenuP2 = new QMNestedButton(UIMenuP1, 5, 1, "Page 2", "Second Page");
-            UIMenuP3 = new QMNestedButton(UIMenuP2, 5, 1, "Page 3", "Third Page");
+            ButtonAPI.CreateButton(ButtonAPI.ButtonType.Default, "Pure\nCheat", "Pure cheat menu",
+                ButtonAPI.HorizontalPosition.LeftOfMenu, ButtonAPI.VerticalPosition.TopButton, ButtonAPI.ShortcutMenuTransform, delegate (bool a)
+                {
+                    ButtonAPI.EnterSubMenu(ButtonAPI.MakeEmptyPage("PureCheat"));
+                }, Color.white, Color.white, null, true, false, false, false, null, true);
+
+            ButtonAPI.CreateButton(ButtonAPI.ButtonType.Default, "Player List", "Player list menu",
+                ButtonAPI.HorizontalPosition.FirstButtonPos, ButtonAPI.VerticalPosition.TopButton, ButtonAPI.MakeEmptyPage("PureCheat").transform, delegate (bool a)
+                {
+                    ButtonAPI.EnterSubMenu(ButtonAPI.MakeEmptyPage("PlayerList"));
+                }, Color.white, Color.white, null, false, true, false, false, null, true);
         }
     }
 }
