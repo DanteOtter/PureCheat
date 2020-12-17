@@ -1,6 +1,5 @@
 ﻿using MelonLoader;
 using PureCheat.API;
-using PureCheat.Addons;
 using System.Collections.Generic;
 
 namespace PureCheat
@@ -8,29 +7,54 @@ namespace PureCheat
     public class Core : MelonMod
     {
         public static List<PureModSystem> Mods = new List<PureModSystem>();
-        
+
         public override void OnApplicationStart()
         {
             PureLogger.Init();
 
-            Mods.Add(new QMUI());
+            Mods.Add(new Addons.QMUI());
 
-            Mods.Add(new Fly());
-            Mods.Add(new Jump());
-            Mods.Add(new VRCMin());
-            Mods.Add(new EarRape());
-            Mods.Add(new FastQuit());
-            Mods.Add(new FOVChanger());
-            Mods.Add(new RemoveItems());
-            Mods.Add(new RayTeleport());
-            Mods.Add(new FPSUnlimiter());
-            Mods.Add(new PlayerTeleport());
+            Mods.Add(new Addons.Fly());
+            Mods.Add(new Addons.Jump());
+            Mods.Add(new Addons.VRCMin());
+            Mods.Add(new Addons.EarRape()); // not for public version
+            Mods.Add(new Addons.SnowTime());
+            Mods.Add(new Addons.RIPMicro()); // not for public version
+            Mods.Add(new Addons.QuickQuit()); // not for public version
+            //Mods.Add(new Addons.AlwaysInfo()); // FIX!
+            Mods.Add(new Addons.FOVChanger());
+            Mods.Add(new Addons.RemoveItems()); // not for public version
+            Mods.Add(new Addons.RayTeleport());
+            //Mods.Add(new Addons.JoinNotifier()); // FIX!
+            Mods.Add(new Addons.FPSUnlimiter());
+            Mods.Add(new Addons.DownloadVRCA());
+            Mods.Add(new Addons.QuickRespawn());
+            Mods.Add(new Addons.ReJoinInstance());
+            Mods.Add(new Addons.PlayerTeleport());
+            Mods.Add(new Addons.OptimizeMirrors());
+            Mods.Add(new Addons.ForceAllowClone());
+            //Mods.Add(new Addons.UnlimitedAvatarFavorite()); // FIX!
 
             foreach (PureModSystem mod in Mods)
             {
-                mod.OnEarlierStart();
                 PureLogger.Log($"{mod.ModName} loaded!");
+                mod.OnEarlierStart();
             }
+
+            NetworkManagerHooks.OnJoin += NetworkManagerHooks_OnJoin;
+            NetworkManagerHooks.OnLeave += NetworkManagerHooks_OnLeave;
+        }
+
+        private void NetworkManagerHooks_OnJoin(VRC.Player player)
+        {
+            foreach (PureModSystem mod in Mods)
+                mod.OnPlayerJoin(player);
+        }
+
+        private void NetworkManagerHooks_OnLeave(VRC.Player player)
+        {
+            foreach (PureModSystem mod in Mods)
+                mod.OnPlayerLeave(player);
         }
 
         public override void VRChat_OnUiManagerInit()

@@ -1,7 +1,7 @@
-﻿using System.Reflection;
+﻿using MelonLoader;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using MelonLoader;
 
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
@@ -35,5 +35,5 @@ using MelonLoader;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
-[assembly: MelonInfo(typeof(PureCheat.Core), "PureCheat", "5.9.2", "PureFoxCore#8192", "https://discord.gg/VCbeWNW")]
+[assembly: MelonInfo(typeof(PureCheat.Core), "PureCheat", "6.0.0", "PureFoxCore#8192", "https://discord.gg/VCbeWNW")]
 [assembly: MelonGame("VRChat", "VRChat")]

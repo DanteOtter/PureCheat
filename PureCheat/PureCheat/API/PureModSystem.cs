@@ -8,6 +8,8 @@
         public virtual void OnUpdate() { }
         public virtual void OnFixedUpdate() { }
         public virtual void OnLateUpdate() { }
+        public virtual void OnPlayerJoin(VRC.Player player) { }
+        public virtual void OnPlayerLeave(VRC.Player player) { }
         public virtual void OnGUI() { }
         public virtual void OnQuit() { }
     }

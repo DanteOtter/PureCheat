@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -29,6 +30,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Assembly-CSharp">
@@ -37,6 +39,10 @@
     </Reference>
     <Reference Include="Il2Cppmscorlib">
       <HintPath>..\..\..\..\..\Games\SteamLibrary\steamapps\common\VRChat\MelonLoader\Managed\Il2Cppmscorlib.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Il2CppSystem.Core">
+      <HintPath>..\..\..\..\..\Games\SteamLibrary\steamapps\common\VRChat\MelonLoader\Managed\Il2CppSystem.Core.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="MelonLoader.ModHandler">
@@ -95,18 +101,28 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Addons\AlwaysInfo.cs" />
+    <Compile Include="Addons\DownloadVRCA.cs" />
+    <Compile Include="Addons\ForceAllowClone.cs" />
     <Compile Include="Addons\FOVChanger.cs" />
     <Compile Include="Addons\FPSUnlimiter.cs" />
-    <Compile Include="Addons\FastQuit.cs" />
+    <Compile Include="Addons\JoinNotifier.cs" />
+    <Compile Include="Addons\OptimizeMirrors.cs" />
+    <Compile Include="Addons\QuickQuit.cs" />
     <Compile Include="Addons\Jump.cs" />
     <Compile Include="Addons\PlayerTeleport.cs" />
+    <Compile Include="Addons\QuickRespawn.cs" />
+    <Compile Include="Addons\ReJoinInstance.cs" />
     <Compile Include="Addons\RemoveItems.cs" />
     <Compile Include="Addons\Fly.cs" />
     <Compile Include="Addons\QMUI.cs" />
     <Compile Include="Addons\RayTeleport.cs" />
+    <Compile Include="Addons\RIPMicro.cs" />
+    <Compile Include="Addons\SnowTime.cs" />
     <Compile Include="Addons\UnlimitedAvatarFavorite.cs" />
     <Compile Include="Addons\EarRape.cs" />
     <Compile Include="Addons\VRCMin.cs" />
+    <Compile Include="API\NetworkManagerHooks.cs" />
     <Compile Include="API\PureLogger.cs" />
     <Compile Include="API\PureModSystem.cs" />
     <Compile Include="API\PureUtils.cs" />

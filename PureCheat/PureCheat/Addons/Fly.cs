@@ -14,6 +14,7 @@ namespace PureCheat.Addons
         public static bool isFly = false;
 
         public static GameObject toggleFlyButton = null;
+        public static GameObject resetFlySpeedButton = null;
 
         public override void OnStart()
         {
@@ -31,16 +32,18 @@ namespace PureCheat.Addons
                     PureLogger.Log(a ? "Fly enabled" : "Fly Disabled");
                 }, Color.white, Color.red, null, false, false);
 
-            ButtonAPI.CreateButton(ButtonAPI.ButtonType.Default, $"Reset Speed", "Reset fly speed",
+            resetFlySpeedButton = ButtonAPI.CreateButton(ButtonAPI.ButtonType.Default, $"Speed [{flySpeed}]", "Reset fly speed",
                 ButtonAPI.HorizontalPosition.FirstButtonPos, ButtonAPI.VerticalPosition.TopButton, ButtonAPI.MakeEmptyPage("FlyMenu").transform, delegate (bool a)
                 {
                     flySpeed = 2;
+                    resetFlySpeedButton.transform.GetComponentInChildren<Text>().text = $"Speed [{flySpeed}]";
                 }, Color.white, Color.white, null, false);
 
             ButtonAPI.CreateButton(ButtonAPI.ButtonType.Default, "▲", "Fly speed up",
                 ButtonAPI.HorizontalPosition.SecondButtonPos, ButtonAPI.VerticalPosition.TopButton, ButtonAPI.MakeEmptyPage("FlyMenu").transform, delegate (bool a)
                 {
                     flySpeed += 1;
+                    resetFlySpeedButton.transform.GetComponentInChildren<Text>().text = $"Speed [{flySpeed}]";
                 }, Color.white, Color.white, null, false, false);
 
             ButtonAPI.CreateButton(ButtonAPI.ButtonType.Default, "▼", "Fly speed down",
@@ -50,6 +53,8 @@ namespace PureCheat.Addons
 
                     if (flySpeed <= 0)
                         flySpeed = 1;
+
+                    resetFlySpeedButton.transform.GetComponentInChildren<Text>().text = $"Speed [{flySpeed}]";
                 }, Color.white, Color.white, null, false);
         }
 
@@ -69,6 +74,7 @@ namespace PureCheat.Addons
 
                     if (flySpeed <= 0)
                         flySpeed = 1;
+                    resetFlySpeedButton.transform.GetComponentInChildren<Text>().text = $"Speed [{flySpeed}]";
                 }
 
 
@@ -86,9 +92,9 @@ namespace PureCheat.Addons
                 if (Input.GetKey(KeyCode.Q))
                     player.transform.position -= playerCamera.transform.up * flySpeed * Time.deltaTime;
 
-                if (System.Math.Abs(Input.GetAxis("Joy1 Axis 2")) > 0f)
+                if (Math.Abs(Input.GetAxis("Joy1 Axis 2")) > 0f)
                     player.transform.position += playerCamera.transform.forward * flySpeed * Time.deltaTime * (Input.GetAxis("Joy1 Axis 2") * -1f);
-                if (System.Math.Abs(Input.GetAxis("Joy1 Axis 1")) > 0f)
+                if (Math.Abs(Input.GetAxis("Joy1 Axis 1")) > 0f)
                     player.transform.position += playerCamera.transform.right * flySpeed * Time.deltaTime * Input.GetAxis("Joy1 Axis 1");
             }
         }
