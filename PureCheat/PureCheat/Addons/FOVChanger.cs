@@ -15,7 +15,7 @@ namespace PureCheat.Addons
 
         private Camera playerCamera;
 
-        public static GameObject resetFOVButton = null;
+        private ButtonAPI.PlagueButton resetFOVButton;
 
         public override void OnStart()
         {
@@ -35,7 +35,7 @@ namespace PureCheat.Addons
                 {
                     FOV = defaultFOV;
                     playerCamera.fieldOfView = FOV;
-                    resetFOVButton.transform.GetComponentInChildren<Text>().text = $"FOV [{FOV}]";
+                    resetFOVButton.SetText($"FOV [{FOV}]");
                 }, Color.white, Color.white, null, true);
 
             ButtonAPI.CreateButton(ButtonAPI.ButtonType.Default, "▲", "Set field of view up",
@@ -43,7 +43,7 @@ namespace PureCheat.Addons
                 {
                     FOV += 1;
                     playerCamera.fieldOfView = FOV;
-                    resetFOVButton.transform.GetComponentInChildren<Text>().text = $"FOV [{FOV}]";
+                    resetFOVButton.SetText($"FOV [{FOV}]");
                 }, Color.white, Color.white, null, false, false);
 
             ButtonAPI.CreateButton(ButtonAPI.ButtonType.Default, "▼", "Set field of view down",
@@ -55,7 +55,7 @@ namespace PureCheat.Addons
                         FOV = 1;
 
                     playerCamera.fieldOfView = FOV;
-                    resetFOVButton.transform.GetComponentInChildren<Text>().text = $"FOV [{FOV}]";
+                    resetFOVButton.SetText($"FOV [{FOV}]");
                 }, Color.white, Color.white, null, false);
         }
     }

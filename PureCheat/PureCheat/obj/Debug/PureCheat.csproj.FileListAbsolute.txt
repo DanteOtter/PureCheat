@@ -1,0 +1,6 @@
+D:\Projects\C#\PureCheat\PureCheat\PureCheat\bin\Debug\PureCheat.dll
+D:\Projects\C#\PureCheat\PureCheat\PureCheat\bin\Debug\PureCheat.pdb
+D:\Projects\C#\PureCheat\PureCheat\PureCheat\obj\Debug\PureCheat.csprojAssemblyReference.cache
+D:\Projects\C#\PureCheat\PureCheat\PureCheat\obj\Debug\PureCheat.csproj.CoreCompileInputs.cache
+D:\Projects\C#\PureCheat\PureCheat\PureCheat\obj\Debug\PureCheat.dll
+D:\Projects\C#\PureCheat\PureCheat\PureCheat\obj\Debug\PureCheat.pdb

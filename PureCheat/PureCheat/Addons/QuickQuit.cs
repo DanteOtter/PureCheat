@@ -1,10 +1,8 @@
 ﻿using UnityEngine;
 using System.Timers;
 using PureCheat.API;
-using UnityEngine.UI;
 using PlagueButtonAPI;
 using System.Diagnostics;
-using System;
 
 namespace PureCheat.Addons
 {
@@ -12,7 +10,7 @@ namespace PureCheat.Addons
     {
         public override string ModName => "Quick quit";
 
-        private GameObject killButton = null;
+        private ButtonAPI.PlagueButton killButton = null;
 
         public override void OnStart()
         {
@@ -37,7 +35,7 @@ namespace PureCheat.Addons
         public override void OnUpdate()
         {
             if (Input.GetKey(KeyCode.LeftAlt) && Input.GetKeyDown(KeyCode.F3))
-                killButton.GetComponent<Button>().onClick.Invoke();
+                killButton.button.onClick.Invoke();
         }
     }
 }

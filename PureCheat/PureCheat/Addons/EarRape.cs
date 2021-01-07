@@ -11,7 +11,7 @@ namespace PureCheat.Addons
 
         public override string ModName => "EarRape";
 
-        public static GameObject earRapeButton = null;
+        private ButtonAPI.PlagueButton earRapeButton;
 
         public override void OnStart()
         {
@@ -26,7 +26,7 @@ namespace PureCheat.Addons
         public override void OnUpdate()
         {
             if (Input.GetKeyDown(KeyCode.F9))
-                earRapeButton.GetComponent<Button>().onClick.Invoke();
+                earRapeButton.button.onClick.Invoke();
         }
     }
 }

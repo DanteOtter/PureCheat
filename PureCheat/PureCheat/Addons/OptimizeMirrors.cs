@@ -11,7 +11,7 @@ namespace PureCheat.Addons
 
         public override void OnStart()
         {
-            ButtonAPI.CreateButton(ButtonAPI.ButtonType.Toggle, "Mirror", "Toggle mirror quality" ,
+            ButtonAPI.CreateButton(ButtonAPI.ButtonType.Toggle, "Mirror Q", "Toggle mirror quality" ,
                 ButtonAPI.HorizontalPosition.FourthButtonPos, ButtonAPI.VerticalPosition.SecondButton, ButtonAPI.MakeEmptyPage("PureCheat").transform, delegate (bool a)
                 {
                     MirrorReflection[] array = Object.FindObjectsOfType<MirrorReflection>();

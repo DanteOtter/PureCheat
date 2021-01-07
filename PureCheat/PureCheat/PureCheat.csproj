@@ -71,6 +71,10 @@
       <HintPath>..\..\..\..\..\Games\SteamLibrary\steamapps\common\VRChat\MelonLoader\Managed\UnityEngine.CoreModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="UnityEngine.IMGUIModule">
+      <HintPath>..\..\..\..\..\Games\SteamLibrary\steamapps\common\VRChat\MelonLoader\Managed\UnityEngine.IMGUIModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="UnityEngine.InputModule">
       <HintPath>..\..\..\..\..\Games\SteamLibrary\steamapps\common\VRChat\MelonLoader\Managed\UnityEngine.InputModule.dll</HintPath>
       <Private>False</Private>
@@ -81,6 +85,10 @@
     </Reference>
     <Reference Include="UnityEngine.PhysicsModule">
       <HintPath>..\..\..\..\..\Games\SteamLibrary\steamapps\common\VRChat\MelonLoader\Managed\UnityEngine.PhysicsModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.TextRenderingModule">
+      <HintPath>..\..\..\..\..\Games\SteamLibrary\steamapps\common\VRChat\MelonLoader\Managed\UnityEngine.TextRenderingModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.UI">
@@ -102,7 +110,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Addons\AlwaysInfo.cs" />
+    <Compile Include="Addons\BeerTime.cs" />
     <Compile Include="Addons\DownloadVRCA.cs" />
+    <Compile Include="Addons\ESP.cs" />
+    <Compile Include="Addons\Players.cs" />
     <Compile Include="Addons\ForceAllowClone.cs" />
     <Compile Include="Addons\FOVChanger.cs" />
     <Compile Include="Addons\FPSUnlimiter.cs" />

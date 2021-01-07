@@ -7,8 +7,7 @@ namespace PureCheat.Addons
     public class QMUI : PureModSystem
     {
         public override string ModName => "QuickMenu Utils";
-
-        private bool isUIInit = false;
+        public static bool isUIInit = false;
 
         // ▲▼
         public override void OnStart()
@@ -17,7 +16,7 @@ namespace PureCheat.Addons
             GameObject.Find("UserInterface/QuickMenu").GetComponent<BoxCollider>().size = new Vector3(5034.68f, 3342.426f, 1f);
 
             ButtonAPI.CreateButton(ButtonAPI.ButtonType.Default, "Pure\nCheat", "Pure cheat menu",
-                ButtonAPI.HorizontalPosition.LeftOfMenu, ButtonAPI.VerticalPosition.TopButton, ButtonAPI.ShortcutMenuTransform, delegate (bool a)
+                ButtonAPI.HorizontalPosition.LeftOfMenu, ButtonAPI.VerticalPosition.AboveTopButton, ButtonAPI.ShortcutMenuTransform, delegate (bool a)
                 {
                     ButtonAPI.EnterSubMenu(ButtonAPI.MakeEmptyPage("PureCheat"));
                 }, Color.white, Color.white, null, true, false, false, false, null, true);

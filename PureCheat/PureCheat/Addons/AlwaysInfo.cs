@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using PureCheat.API;
 using PlagueButtonAPI;
 

@@ -1,4 +1,4 @@
-﻿using MelonLoader;
+using MelonLoader;
 using PureCheat.API;
 using System.Collections.Generic;
 
@@ -15,10 +15,13 @@ namespace PureCheat
             Mods.Add(new Addons.QMUI());
 
             Mods.Add(new Addons.Fly());
+            Mods.Add(new Addons.ESP());
             Mods.Add(new Addons.Jump());
             Mods.Add(new Addons.VRCMin());
+            Mods.Add(new Addons.Players());
             Mods.Add(new Addons.EarRape()); // not for public version
             Mods.Add(new Addons.SnowTime());
+            Mods.Add(new Addons.BeerTime());
             Mods.Add(new Addons.RIPMicro()); // not for public version
             Mods.Add(new Addons.QuickQuit()); // not for public version
             //Mods.Add(new Addons.AlwaysInfo()); // FIX!

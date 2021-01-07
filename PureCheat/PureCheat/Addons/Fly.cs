@@ -13,8 +13,8 @@ namespace PureCheat.Addons
         public static int flySpeed = 2;
         public static bool isFly = false;
 
-        public static GameObject toggleFlyButton = null;
-        public static GameObject resetFlySpeedButton = null;
+        private ButtonAPI.PlagueButton toggleFlyButton;
+        private ButtonAPI.PlagueButton resetFlySpeedButton;
 
         public override void OnStart()
         {
@@ -36,14 +36,14 @@ namespace PureCheat.Addons
                 ButtonAPI.HorizontalPosition.FirstButtonPos, ButtonAPI.VerticalPosition.TopButton, ButtonAPI.MakeEmptyPage("FlyMenu").transform, delegate (bool a)
                 {
                     flySpeed = 2;
-                    resetFlySpeedButton.transform.GetComponentInChildren<Text>().text = $"Speed [{flySpeed}]";
+                    resetFlySpeedButton.SetText($"Speed [{flySpeed}]");
                 }, Color.white, Color.white, null, false);
 
             ButtonAPI.CreateButton(ButtonAPI.ButtonType.Default, "▲", "Fly speed up",
                 ButtonAPI.HorizontalPosition.SecondButtonPos, ButtonAPI.VerticalPosition.TopButton, ButtonAPI.MakeEmptyPage("FlyMenu").transform, delegate (bool a)
                 {
                     flySpeed += 1;
-                    resetFlySpeedButton.transform.GetComponentInChildren<Text>().text = $"Speed [{flySpeed}]";
+                    resetFlySpeedButton.SetText($"Speed [{flySpeed}]");
                 }, Color.white, Color.white, null, false, false);
 
             ButtonAPI.CreateButton(ButtonAPI.ButtonType.Default, "▼", "Fly speed down",
@@ -54,14 +54,14 @@ namespace PureCheat.Addons
                     if (flySpeed <= 0)
                         flySpeed = 1;
 
-                    resetFlySpeedButton.transform.GetComponentInChildren<Text>().text = $"Speed [{flySpeed}]";
+                    resetFlySpeedButton.SetText($"Speed [{flySpeed}]");
                 }, Color.white, Color.white, null, false);
         }
 
         public override void OnUpdate()
         {
             if (Input.GetKeyDown(KeyCode.F))
-                toggleFlyButton.GetComponent<Button>().onClick.Invoke();
+                toggleFlyButton.button.onClick.Invoke();
 
             if (isFly)
             {
@@ -74,7 +74,7 @@ namespace PureCheat.Addons
 
                     if (flySpeed <= 0)
                         flySpeed = 1;
-                    resetFlySpeedButton.transform.GetComponentInChildren<Text>().text = $"Speed [{flySpeed}]";
+                    resetFlySpeedButton.SetText($"Speed [{flySpeed}]");
                 }
 
 
