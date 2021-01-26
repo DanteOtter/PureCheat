@@ -1,7 +1,5 @@
-# PureCheat
-Simple mod for VRChat
-
-## Dependencies
+# PureCheat - Simple mod for VRChat
+### Dependencies
 - Assembly-CSharp
 - Il2Cppmscorlib
 - [UnhollowerBaseLib](https://github.com/knah/Il2CppAssemblyUnhollower)
