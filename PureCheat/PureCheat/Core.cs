@@ -1,5 +1,6 @@
 using MelonLoader;
 using PureCheat.API;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace PureCheat
@@ -10,6 +11,13 @@ namespace PureCheat
 
         public override void OnApplicationStart()
         {
+            MelonCoroutines.Start(InitMod());
+        }
+
+        public IEnumerator InitMod()
+        {
+            while (ReferenceEquals(NetworkManager.field_Internal_Static_NetworkManager_0, null)) yield return null;
+            NetworkManagerHooks.Initialize();
             PureLogger.Init();
 
             Mods.Add(new Addons.QMUI());
@@ -28,7 +36,7 @@ namespace PureCheat
             Mods.Add(new Addons.FOVChanger());
             Mods.Add(new Addons.RemoveItems()); // not for public version
             Mods.Add(new Addons.RayTeleport());
-            //Mods.Add(new Addons.JoinNotifier()); // FIX!
+            Mods.Add(new Addons.JoinNotifier());
             Mods.Add(new Addons.FPSUnlimiter());
             Mods.Add(new Addons.DownloadVRCA());
             Mods.Add(new Addons.QuickRespawn());
@@ -48,7 +56,7 @@ namespace PureCheat
             NetworkManagerHooks.OnLeave += NetworkManagerHooks_OnLeave;
         }
 
-        private void NetworkManagerHooks_OnJoin(VRC.Player player)
+            private void NetworkManagerHooks_OnJoin(VRC.Player player)
         {
             foreach (PureModSystem mod in Mods)
                 mod.OnPlayerJoin(player);
